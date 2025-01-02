@@ -5,7 +5,12 @@
   "main": "index.js",
   "scripts": {
     "start": "nodemon ./api/index.js",
-    "vercel-build":"echo hello"
+    "vercel-build": "echo hello",
+    "test": "jest",
+    "format:write": "npx prettier . --write",
+    "format:check": "npx prettier . --check",
+    "lint:check": "eslint \"**/*.js\"",
+    "lint:fix": "eslint \"**/*.js\" --fix"
   },
   "keywords": [],
   "author": "",
@@ -25,6 +30,11 @@
     "xoauth2": "^1.2.0"
   },
   "devDependencies": {
-    "nodemon": "^3.0.1"
+    "@eslint/js": "^9.17.0",
+    "eslint": "^9.17.0",
+    "globals": "^15.14.0",
+    "jest": "^29.7.0",
+    "nodemon": "^3.0.1",
+    "prettier": "3.3.2"
   }
 }

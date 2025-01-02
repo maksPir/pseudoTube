@@ -6,7 +6,7 @@ export const countOfSkip = (dataFilms: { count: number }, count: number) => {
       const clientWidth = document.documentElement.clientWidth;
       const oneWidth = 340;
       const countInRow = Math.floor((clientWidth - 60) / oneWidth);
-      const indexOfBottomElem = ((2 * clientHeight) / heightOneElem) * countInRow;
+      //const indexOfBottomElem = ((2 * clientHeight) / heightOneElem) * countInRow;
       const k = 30 / countInRow; ////////////////////
 
       const resHeight = k * heightOneElem - 100;

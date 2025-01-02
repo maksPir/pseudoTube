@@ -3,6 +3,7 @@ import { AppDispatch } from 'shared/lib/types';
 import { responseSlice } from 'entities/response';
 import { IComment } from 'shared/api';
 import CommentService from 'shared/api/typicode/comments';
+import axios from 'axios';
 
 const initialState: { comments: IComment[] } = {
   comments: [] as IComment[],
@@ -25,8 +26,10 @@ export const fetchCommentsById = async (dispatch: AppDispatch, filmId: number) =
     const response = await CommentService.getById(filmId);
     dispatch(fetchingStop({ isError: false, isFetching: false, isSuccess: true, answer: '' }));
     dispatch(setComments(response.data.comments));
-  } catch (e: any) {
-    dispatch(fetchingStop({ isError: true, isFetching: false, isSuccess: false, answer: e.message }));
+  } catch (e: unknown) {
+    if (e instanceof Error) {
+      dispatch(fetchingStop({ isError: true, isFetching: false, isSuccess: false, answer: e.message }));
+    }
   }
 };
 
@@ -37,7 +40,9 @@ export const addComment = async (dispatch: AppDispatch, filmId: number, text: st
     const response = await CommentService.addComment(filmId, userId, text);
     dispatch(fetchingStop({ isError: false, isFetching: false, isSuccess: true, answer: response.data.message }));
     await fetchCommentsById(dispatch, filmId);
-  } catch (e: any) {
-    dispatch(fetchingStop({ isError: true, isFetching: false, isSuccess: false, answer: e.response.data.message }));
+  } catch (e: unknown) {
+    if (axios.isAxiosError(e)) {
+      dispatch(fetchingStop({ isError: true, isFetching: false, isSuccess: false, answer: e.response?.data.message }));
+    }
   }
 };

@@ -4,4 +4,3 @@ export interface IInitialState {
   isSuccess: boolean;
   answer: string;
 }
-export interface IResponsePayload extends IInitialState {}

@@ -1,5 +1,5 @@
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
-import { IInitialState, IResponsePayload } from './types';
+import { IInitialState } from './types';
 import { AppDispatch } from 'shared/lib/types';
 import { fetchFilmById, fetchFilms, fetchRangeFilms } from 'entities/film';
 import { login, registration } from 'entities/user';
@@ -20,7 +20,7 @@ export const responseSlice = createSlice({
       state.isSuccess = false;
       state.isFetching = true;
     },
-    fetchingStop: (state, payload: PayloadAction<IResponsePayload>) => {
+    fetchingStop: (state, payload: PayloadAction<IInitialState>) => {
       state.answer = payload.payload.answer;
       state.isError = payload.payload.isError;
       state.isSuccess = payload.payload.isSuccess;

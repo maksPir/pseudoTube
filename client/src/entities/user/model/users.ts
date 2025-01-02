@@ -43,7 +43,7 @@ export const authSlice = createSlice({
         state.user = action.payload;
       }
     });
-    builder.addCase(logoutAction.fulfilled, (state, action) => {
+    builder.addCase(logoutAction.fulfilled, (state) => {
       state.isAuth = false;
       state.user.email = null;
       state.user.id = null;
@@ -65,11 +65,13 @@ export const login = createAsyncThunk('user/login', async (data: IAuthPayload, {
     const response = await UserService.login(data.email, data.password);
     localStorage.setItem('token', response.data.accessToken);
     return response.data.user;
-  } catch (e: any) {
-    if (e.response) {
-      return rejectWithValue(e.response?.data?.message);
-    } else {
-      return rejectWithValue(e.message);
+  } catch (e: unknown) {
+    if (axios.isAxiosError(e)) {
+      if (e.response) {
+        return rejectWithValue(e.response?.data?.message);
+      } else {
+        return rejectWithValue(e.message);
+      }
     }
   }
 });
@@ -78,23 +80,26 @@ export const registration = createAsyncThunk('user/registration', async (data: I
     const response = await UserService.registration(data.email, data.password);
     localStorage.setItem('token', response.data.accessToken);
     return response.data.user;
-  } catch (e: any) {
-    if (e.response) {
-      return rejectWithValue(e.response?.data?.message);
-    } else {
-      return rejectWithValue(e.message);
+  } catch (e: unknown) {
+    if (axios.isAxiosError(e)) {
+      if (e.response) {
+        return rejectWithValue(e.response?.data?.message);
+      } else {
+        return rejectWithValue(e.message);
+      }
     }
   }
 });
 export const logoutAction = createAsyncThunk('user/logout', async (_, { rejectWithValue }) => {
   try {
-    const response = await UserService.logout();
     localStorage.removeItem('token');
-  } catch (e: any) {
-    if (e.response) {
-      return rejectWithValue(e.response?.data?.message);
-    } else {
-      return rejectWithValue(e.message);
+  } catch (e: unknown) {
+    if (axios.isAxiosError(e)) {
+      if (e.response) {
+        return rejectWithValue(e.response?.data?.message);
+      } else {
+        return rejectWithValue(e.message);
+      }
     }
   }
 });
@@ -103,7 +108,7 @@ export const checkAuth = createAsyncThunk('user/checkAuth', async () => {
     const response = await axios.get<AuthResponse>(`${API_URL}/refresh`, { withCredentials: true });
     localStorage.setItem('token', response.data.accessToken);
     return response.data.user;
-  } catch (e) {
+  } catch (e: unknown) {
     console.log(e);
   }
 });

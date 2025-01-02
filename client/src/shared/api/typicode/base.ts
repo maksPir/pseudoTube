@@ -1,5 +1,4 @@
 import axios from 'axios';
-import { AuthResponse } from './models';
 import { API_URL } from 'shared/config';
 
 const $api = axios.create({
@@ -15,8 +14,8 @@ $api.interceptors.response.use(
   (config) => {
     return config;
   },
-  async (error) => {
-    const originalRequest = error.config;
+  async () => {
+    //const originalRequest = error.config;
     // if (
     //   error.response &&
     //   error.response.status &&

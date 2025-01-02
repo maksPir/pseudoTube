@@ -6,7 +6,11 @@ export default class CommentService {
   static async getById(id: number): Promise<AxiosResponse<ICommentResponse>> {
     return axios.get<ICommentResponse>(`${API_URL}/comment/${id}`);
   }
-  static async addComment(idFilm: number, idUser: number, text: string): Promise<AxiosResponse<any, any>> {
+  static async addComment(
+    idFilm: number,
+    idUser: number,
+    text: string
+  ): Promise<AxiosResponse<{ message: string }, unknown>> {
     return axios.post(`${API_URL}/comment`, { idFilm, idUser, text });
   }
 }

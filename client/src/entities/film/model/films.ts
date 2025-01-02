@@ -4,6 +4,7 @@ import { IFilm } from 'shared/api';
 import FilmService from 'shared/api/typicode/films';
 import { IFilmInitialState, IFilmRangeParams, IFilmResponse } from './types';
 import { API_URL } from 'shared/config';
+import axios from 'axios';
 
 const initialState: IFilmInitialState = {
   films: [] as IFilm[],
@@ -30,7 +31,7 @@ export const filmSlice = createSlice({
           state.error = false;
         }
       })
-      .addCase(fetchFilms.rejected, (state, action) => {
+      .addCase(fetchFilms.rejected, (state) => {
         state.error = true;
       });
     builder
@@ -53,8 +54,10 @@ export const addFilm = createAsyncThunk('film/addFilm', async (data: IFilm, { re
   try {
     const response = await FilmService.addFilm(data);
     return response.data;
-  } catch (e: any) {
-    return rejectWithValue(e.message);
+  } catch (e: unknown) {
+    if (e instanceof Error) {
+      return rejectWithValue(e.message);
+    }
   }
 });
 export const fetchFilms = createAsyncThunk('film/fetchFilms', async (_, { rejectWithValue }) => {
@@ -62,8 +65,10 @@ export const fetchFilms = createAsyncThunk('film/fetchFilms', async (_, { reject
     const response = await FilmService.getAll();
 
     return response.data;
-  } catch (e: any) {
-    return rejectWithValue(e.message);
+  } catch (e: unknown) {
+    if (e instanceof Error) {
+      return rejectWithValue(e.message);
+    }
   }
 });
 export const fetchRangeFilms = createAsyncThunk(
@@ -72,8 +77,10 @@ export const fetchRangeFilms = createAsyncThunk(
     try {
       const response = await FilmService.getRange(data.start, data.count);
       return response.data;
-    } catch (e: any) {
-      return rejectWithValue(e.message);
+    } catch (e: unknown) {
+      if (e instanceof Error) {
+        return rejectWithValue(e.message);
+      }
     }
   }
 );
@@ -81,11 +88,11 @@ export const fetchFilmById = createAsyncThunk('film/fetchFilmById', async (filmI
   try {
     const response = await FilmService.getById(filmId);
     return response.data;
-  } catch (e: any) {
-    if (e.response) {
-      return rejectWithValue(e.response?.data?.message);
-    } else {
+  } catch (e: unknown) {
+    if (e instanceof Error) {
       return rejectWithValue(e.message);
+    } else if (axios.isAxiosError(e)) {
+      return rejectWithValue(e.response?.data?.message);
     }
   }
 });
