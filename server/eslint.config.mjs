@@ -5,7 +5,6 @@ import pluginJs from '@eslint/js';
 export default [
   {
     files: ['**/*.js'],
-    // Укажите глобальные переменные для Jest через languageOptions, а не через env
     languageOptions: {
       sourceType: 'commonjs',
       globals: {
