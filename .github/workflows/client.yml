@@ -83,11 +83,11 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           context: ./server
-          file: ./Dockerfile
+          file: ./server/Dockerfile
           tags: maxim1512/pseudotubeserver:latest
       - name: Build and push Docker image for client
         uses: docker/build-push-action@v2
         with:
           context: ./client
-          file: ./Dockerfile
+          file: ./client/Dockerfile
           tags: maxim1512/pseudotubeclient:latest
