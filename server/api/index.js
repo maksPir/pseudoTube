@@ -4,7 +4,7 @@ const cookieParser = require('cookie-parser');
 const userRouter = require('../routes/user.routes');
 const filmRouter = require('../routes/film.routes');
 const commentRouter = require('../routes/comment.routes');
-const errorMiddleware = require('../middlewares/error-middleware');
+//const errorMiddleware = require('../middlewares/error-middleware');
 require('dotenv').config();
 
 const app = express();
@@ -19,7 +19,7 @@ app.use(
 app.use('/api', userRouter);
 app.use('/api', filmRouter);
 app.use('/api', commentRouter);
-app.use(errorMiddleware);
+//app.use(errorMiddleware);
 const PORT = process.env.PORT || 5001;
 const start = async () => {
   try {
