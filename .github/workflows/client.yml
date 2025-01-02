@@ -5,7 +5,7 @@ on:
     branches: [ "dev" ]
 
 jobs:
-  validate_code:
+  validate_code_client:
     runs-on: ubuntu-latest
     defaults:
       run:
@@ -25,10 +25,31 @@ jobs:
 
       - name: Test
         run: npm run test
+
+  validate_code_server:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: server
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Dependencies Installing
+        run: npm i
+
+      - name: Format
+        run: npm run format:check
+
+      - name: Lint
+        run: npm run lint:check
+
+      - name: Test
+        run: npm run test
         
   merge-branch:
     permissions: write-all
-    needs: validate_code
+    needs: [validate_code_client,validate_code_server]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
