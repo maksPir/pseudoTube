@@ -1,0 +1,14 @@
+version: "3.8"
+services:
+  server:
+    build: server/
+    command: npm run start
+    ports:
+      - 5000:5000
+    image: maxim1512/pseudotubeserver:latest
+  client:
+    build: client/
+    restart: always
+    ports:
+      - 3000:3000
+    image: maxim1512/pseudotubeclient:latest
