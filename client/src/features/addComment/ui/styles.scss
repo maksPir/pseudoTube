@@ -1,0 +1,47 @@
+.commentinput {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  &__btn {
+    align-self: flex-end;
+    background-color: aliceblue;
+    font-size: 20px;
+    border-radius: 10px;
+    width: 200px;
+    cursor: pointer;
+    display: block;
+    margin-top: 10px;
+  }
+  &__btn:hover {
+    background-color: bisque;
+  }
+  &__input {
+    display: block;
+    width: 100%;
+    height: auto;
+    background-color: rgb(93, 89, 89);
+    font-size: 20px;
+    padding: 2px 4px 0 4px;
+    border: none;
+    border-bottom: 3px solid black;
+    resize: none;
+  }
+}
+.textarea {
+  display: block;
+  width: 100%;
+  overflow: hidden;
+  resize: none;
+  min-height: 40px;
+  line-height: 20px;
+  border-bottom: 3px solid black;
+  padding: 3px;
+}
+.textarea:focus {
+  border: none;
+  background-color: aqua;
+}
+.textarea[contenteditable]:empty::before {
+  content: 'Введите ваш комментарий';
+  color: gray;
+}

@@ -1,0 +1,58 @@
+@import 'shared/styles/theme/colors.scss';
+.cardfilm {
+  max-width: 300px;
+  max-height: 500px;
+  min-width: 300px;
+  min-height: 200px;
+  height: 100%;
+  border: 1px solid white;
+  text-align: center;
+  background-color: $dark-theme-third;
+  padding: 10px;
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
+  border-radius: 10px;
+  transition: transform 0.6s;
+  cursor: pointer;
+
+  &__image {
+    position: relative;
+    overflow: hidden;
+    &__skeleton {
+      width: 100%;
+      height: auto;
+      background-color: gray;
+    }
+    img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+    &__focus {
+      position: absolute;
+      top: 0;
+      height: 100%;
+      color: white;
+      background-color: rgba(0, 0, 0, 0.5);
+      background-blend-mode: multiply;
+    }
+  }
+  &__title {
+    word-wrap: break-word;
+  }
+  &__desc {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}
+.cardfilm:hover {
+  box-shadow: 8px -5px 18px 0px white;
+  transform: scale(1.1);
+  -webkit-transform: scale(1.1);
+  -moz-transform: scale(1.1);
+  -o-transform: scale(1.1);
+}

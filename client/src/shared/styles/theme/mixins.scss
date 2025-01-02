@@ -1,0 +1,71 @@
+@import 'breakpoints';
+
+@mixin heading1 {
+  font-size: 64px;
+  font-weight: $fw-bold;
+
+  @include mobile {
+    font-size: 24px;
+  }
+  @include middle {
+    font-size: 34px;
+  }
+}
+
+@mixin heading2 {
+  font-size: 44px;
+  font-weight: $fw-bold;
+
+  @include mobile {
+    font-size: 20px;
+  }
+}
+
+@mixin heading3 {
+  font-size: 26px;
+  font-weight: $fw-bold;
+  @include mobile {
+    font-size: 16px;
+  }
+}
+
+@mixin heading5 {
+  font-size: 18px;
+  font-weight: $fw-bold;
+}
+
+@mixin paragraph3 {
+  font-size: 18px;
+  font-weight: $fw-medium;
+
+  @include mobile {
+    font-size: 14px;
+  }
+}
+@mixin text-info {
+  @include mobile {
+    width: 100%;
+    @include font-size(14px);
+  }
+}
+
+@mixin text-regular {
+  font-size: 18px;
+  font-weight: $fw-medium;
+}
+@mixin theme-regular {
+  background-color: $dark-theme-second;
+}
+@mixin customScrollbar {
+  &::-webkit-scrollbar {
+    background-color: rgba(0, 0, 0, 0);
+    border-radius: 3px;
+    width: 6px;
+
+    &-thumb {
+      background-color: rgba(33, 33, 33, 0.252);
+      border: 3px solid rgba(255, 255, 255, 0.064);
+      border-radius: 3px;
+    }
+  }
+}

@@ -1,0 +1,1 @@
+export { MainSectionFilm } from './ui';

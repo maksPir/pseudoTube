@@ -1,0 +1,32 @@
+@import '../../styles/index.scss';
+.button {
+  display: block;
+  box-sizing: border-box;
+  padding: 10px 18px;
+  margin: 5px 20px;
+  border: none;
+  border-radius: 10px;
+  background-color: $dark-theme-fourth;
+  color: white;
+  cursor: pointer;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 700;
+  width: max-content;
+  height: max-content;
+  &:hover {
+    background-color: $dark-theme-second;
+  }
+  @include mobile {
+    font-size: 13px;
+    padding: 5px 10px;
+    margin: 3px 10px;
+    width: 85%;
+    overflow: hidden;
+  }
+  @include middle {
+    font-size: 15px;
+    padding: 8px 12px;
+    margin: 5px 15px;
+  }
+}

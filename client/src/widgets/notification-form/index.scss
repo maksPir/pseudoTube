@@ -1,0 +1,51 @@
+@import 'shared/styles/';
+.notice {
+  position: fixed;
+  width: 180px;
+  text-align: center;
+  background-color: $dark-theme-third;
+  padding: 10px;
+  border-radius: 20px;
+  border: 1px solid black;
+  z-index: 99;
+  margin: 10px;
+  max-height: 50vh;
+  overflow: auto;
+  @include customScrollbar;
+  &__btn {
+    display: flex;
+    justify-content: end;
+    button {
+      color: white;
+      background-color: $dark-theme-second;
+      font-size: 17px;
+      padding: 4px;
+      border-radius: 14px;
+      border: none;
+      cursor: pointer;
+    }
+    button:hover {
+      transform: scale(-1, 1);
+    }
+  }
+}
+.text {
+  &__error {
+    color: red;
+    font-size: 28px;
+    font-weight: 500;
+  }
+  &__success {
+    color: green;
+    font-size: 28px;
+    font-weight: 500;
+  }
+  &__info {
+    color: rgb(233, 160, 1);
+    font-size: 28px;
+    font-weight: 500;
+  }
+  &__information {
+    word-wrap: break-word;
+  }
+}

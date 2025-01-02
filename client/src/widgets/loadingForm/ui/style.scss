@@ -1,0 +1,12 @@
+@import 'shared/styles/index.scss';
+.loadingForm {
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  z-index: 10;
+  width: 100%;
+  &__text {
+    background-color: $dark-theme-second;
+    color: white;
+  }
+}

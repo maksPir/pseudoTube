@@ -1,0 +1,18 @@
+.catalog {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin: 30px;
+  padding-bottom: 200px;
+}
+.filmcard__wrapper {
+  margin: 20px;
+  height: 40vh;
+  min-height: 200px;
+}
+.filmList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}

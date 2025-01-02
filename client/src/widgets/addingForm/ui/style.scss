@@ -1,0 +1,81 @@
+@import 'shared/styles/index.scss';
+.form {
+  &Container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 0;
+    height: 50%;
+    margin-top: 30px;
+  }
+  border: 1px solid black;
+  box-shadow: 1px 1px;
+  background-color: $dark-theme-third;
+  border-radius: 10px;
+  padding: 10px;
+  width: 40%;
+  @include smallHeight {
+    grid-template-columns: 2fr 1fr;
+    height: 100%;
+    width: 100%;
+    display: grid;
+  }
+  &__main {
+    // >div{
+    //     display: grid;
+    //     grid-template-columns: 2fr 7fr;
+    //     margin: 5px 10px;
+    // }
+    > div {
+      display: flex;
+      flex-direction: column;
+      padding: 5px 10px;
+    }
+    // @include mobile {
+    //     >div
+    //     {
+    //         display: flex;
+    //         flex-direction: column;
+    //         padding: 5px 10px;
+    //     }
+
+    // }
+    @include smallHeight {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      overflow: auto;
+      @include customScrollbar;
+      div:first-child {
+        margin-top: 62px;
+      }
+    }
+  }
+  &__footer {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    justify-items: center;
+    align-items: center;
+    @include mobile {
+      padding: 5px 10px;
+    }
+    @media screen and (max-width: 680px) {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    @include smallHeight {
+      justify-content: center;
+    }
+  }
+  @include mobile {
+    font-size: 13px;
+  }
+  @include middle {
+    font-size: 15px;
+  }
+  @media screen and (max-width: 550px) {
+    width: 50%;
+  }
+}

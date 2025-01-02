@@ -1,0 +1,20 @@
+@import 'shared/styles/index.scss';
+.comment {
+  position: relative;
+  border: 1px solid white;
+  border-radius: 10px;
+  padding: 0 10px;
+  margin-top: 10px;
+  &__message {
+    width: 80%;
+    word-wrap: break-word;
+  }
+  &__date {
+    position: absolute;
+    bottom: 0;
+    right: 1%;
+  }
+  @include mobile {
+    font-size: 13px;
+  }
+}
