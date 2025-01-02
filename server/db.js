@@ -5,7 +5,7 @@ const pool = new Pool({
 });
 pool.connect((err) => {
   if (err) throw err;
-  console.log('Connection to db is successfull');
+  console.log('Connection to db is successfull', process.env, process.env.URL_CLIENT);
 });
 
 module.exports = pool;
