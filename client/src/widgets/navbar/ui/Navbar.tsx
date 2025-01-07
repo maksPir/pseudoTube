@@ -33,6 +33,16 @@ const Navbar: FC = () => {
             nameOfClass="button__exit"
           ></Button>
         </nav>
+        <nav role="navigation" className="navbar__item">
+          <Button
+            onClick={() => {
+              setIsMenuOpen((prev) => !prev);
+              navigate(routesEnum.TEST);
+            }}
+            text="Главная без оптимизации"
+            nameOfClass="button__exit"
+          ></Button>
+        </nav>
         {isAuth && user.id === 3 && (
           <nav role="navigation" className="navbar__item">
             <Button

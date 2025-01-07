@@ -8,11 +8,6 @@ class FilmService {
   }
   async getFilms() {
     const candidate = await db.query(`SELECT * FROM film`);
-    let index = 0;
-    for (let item of candidate.rows) {
-      await db.query(`UPDATE film set id=${index} where id=${item.id}`);
-      index++;
-    }
     if (candidate.rowCount == 0) return false;
     return { films: candidate.rows };
   }

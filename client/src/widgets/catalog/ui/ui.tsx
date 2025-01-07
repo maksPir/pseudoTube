@@ -13,10 +13,17 @@ const COUNT_IN_WINDOW = 3;
 interface IFilmProps {
   direction: 0 | 1;
   filmIndex: number;
-  count: number;
+  count: number | string;
 }
-const CatalogToMemo = () => {
-  const [filmPropsState, setFilmPropsState] = useState<IFilmProps>({ direction: 0, filmIndex: 0, count: 30 });
+interface ICatalogProps {
+  isNotOptimizedVer?: boolean;
+}
+const CatalogToMemo = (props: ICatalogProps) => {
+  const [filmPropsState, setFilmPropsState] = useState<IFilmProps>({
+    direction: 0,
+    filmIndex: 0,
+    count: props.isNotOptimizedVer ? 'notOpt' : 30,
+  });
   const {
     ref: refUp,
     inView: inViewUp,
@@ -95,7 +102,10 @@ const CatalogToMemo = () => {
   });
   useEffect(() => {
     if (dataFilms?.films.length) {
-      if (filmPropsState.direction && dataFilms.films.length - COUNT_ITEMS >= 0) {
+      if (props.isNotOptimizedVer) {
+        setVisibleArray(dataFilms.films.slice(0, dataFilms.films.length));
+        setVisibleStartIndx(0);
+      } else if (filmPropsState.direction && dataFilms.films.length - COUNT_ITEMS >= 0) {
         setVisibleArray(
           dataFilms.films.slice(dataFilms.films.length - COUNT_ITEMS - SKIP_ITEMS, dataFilms.films.length)
         );
@@ -113,7 +123,7 @@ const CatalogToMemo = () => {
           <div id="upPseudoElem" style={{ height: ITEM_HEIGHT * countElemsUp }}></div>
           {visibleArray &&
             visibleArray.map((el, index) => {
-              if (index === COUNT_ITEMS - 1) {
+              if (index === COUNT_ITEMS - 1 && !props.isNotOptimizedVer) {
                 //  countInRow
                 return (
                   <div className="filmcard__wrapper" ref={refUp} key={el.id} style={{ backgroundColor: 'red' }}>
@@ -121,7 +131,7 @@ const CatalogToMemo = () => {
                   </div>
                 );
               }
-              if (index === 0) {
+              if (index === 0 && !props.isNotOptimizedVer) {
                 //30-countInRow
                 return (
                   <div className="filmcard__wrapper" ref={refDown} key={el.id} style={{ backgroundColor: 'blue' }}>
