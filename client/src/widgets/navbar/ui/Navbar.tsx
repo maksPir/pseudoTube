@@ -19,7 +19,7 @@ const Navbar: FC = () => {
     <header className="navbar">
       <nav role="navigation" className="navbar__logo">
         <a href="#main">
-          <h1>PseudoTube</h1>
+          <p>PseudoTube</p>
         </a>
       </nav>
       <div className={`navbar__links ${isMenuOpen ? 'active' : ''}`}>
