@@ -5,9 +5,6 @@ import { Catalog } from 'widgets/catalog';
 const MainPage = () => {
   return (
     <main>
-      <div>
-        <h1>PseudoTube</h1>
-      </div>
       <Catalog />
     </main>
   );

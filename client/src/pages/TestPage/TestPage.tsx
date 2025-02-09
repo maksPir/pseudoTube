@@ -5,7 +5,7 @@ const TestPage = () => {
   return (
     <main>
       <div>
-        <h1>PseudoTube without optimization</h1>
+        <p>PseudoTube without optimization</p>
       </div>
       <Catalog isNotOptimizedVer={true} />
     </main>
