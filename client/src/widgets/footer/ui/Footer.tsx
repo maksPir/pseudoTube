@@ -3,7 +3,6 @@ export const Footer = () => {
   return (
     <footer className="footer">
       <ul className="footer__left">
-        Наши социальные сети:
         <li>
           VK:{' '}
           <a target="_blank" href="https://vk.com/twsmfu" rel="noreferrer">
@@ -24,7 +23,6 @@ export const Footer = () => {
         </li>
       </ul>
       <ul className="footer__right">
-        Наши партнеры:
         <li>
           VK:{' '}
           <a target="_blank" href="https://vk.com/twsmfu" rel="noreferrer">
