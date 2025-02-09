@@ -126,7 +126,7 @@ const CatalogToMemo = (props: ICatalogProps) => {
               if (index === COUNT_ITEMS - 1 && !props.isNotOptimizedVer) {
                 //  countInRow
                 return (
-                  <div className="filmcard__wrapper" ref={refUp} key={el.id} style={{ backgroundColor: 'red' }}>
+                  <div className="filmcard__wrapper" ref={refUp} key={el.id}>
                     <FilmCard key={el.id} film={el} />
                   </div>
                 );
@@ -134,7 +134,7 @@ const CatalogToMemo = (props: ICatalogProps) => {
               if (index === 0 && !props.isNotOptimizedVer) {
                 //30-countInRow
                 return (
-                  <div className="filmcard__wrapper" ref={refDown} key={el.id} style={{ backgroundColor: 'blue' }}>
+                  <div className="filmcard__wrapper" ref={refDown} key={el.id}>
                     <FilmCard key={el.id} film={el} />
                   </div>
                 );

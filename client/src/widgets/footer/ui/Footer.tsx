@@ -2,43 +2,43 @@ import './styles.scss';
 export const Footer = () => {
   return (
     <footer className="footer">
-      <div className="footer__left">
+      <ul className="footer__left">
         Наши социальные сети:
-        <ol>
+        <li>
           VK:{' '}
           <a target="_blank" href="https://vk.com/twsmfu" rel="noreferrer">
             Ссылка
           </a>
-        </ol>
-        <ol>
+        </li>
+        <li>
           telegram:{' '}
           <a target="_blank" href="https://t.me/maks1m_sS" rel="noreferrer">
             @t.me/maks1m_sS
           </a>
-        </ol>
-        <ol>
+        </li>
+        <li>
           gitHub:{' '}
           <a target="_blank" href="https://github.com/MaksimPir" rel="noreferrer">
             Ссылка
           </a>
-        </ol>
-      </div>
-      <div className="footer__right">
+        </li>
+      </ul>
+      <ul className="footer__right">
         Наши партнеры:
-        <ol>
+        <li>
           VK:{' '}
           <a target="_blank" href="https://vk.com/twsmfu" rel="noreferrer">
             Ссылка
           </a>
-        </ol>
-        <ol>
+        </li>
+        <li>
           telegram:{' '}
           <a target="_blank" href="https://t.me/maks1m_sS" rel="noreferrer">
             @t.me/maks1m_sS
           </a>
-        </ol>
-        <ol>Одноклассники:</ol>
-      </div>
+        </li>
+        <li>Одноклассники:</li>
+      </ul>
     </footer>
   );
 };

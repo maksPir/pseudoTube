@@ -34,7 +34,7 @@ export const FilmCard: FC<ICardFilmProps> = ({ film }) => {
         )}
       </div>
       <h3 className="cardfilm__title" id="filmTitle">
-        {film.name + film.id}
+        {film.name}
       </h3>
     </article>
   );
