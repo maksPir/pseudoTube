@@ -23,7 +23,7 @@ export const FilmCard: FC<ICardFilmProps> = ({ film }) => {
       ref={ref}
     >
       <div className="cardfilm__image">
-        <ImageLazy src={film.image} inView={inView} />
+        <ImageLazy src={film.image} inView={inView} altText={film.name} />
         {isFocus && (
           <div className="cardfilm__image__focus">
             <div aria-labelledby="filmTitle" className="cardfilm__desc">

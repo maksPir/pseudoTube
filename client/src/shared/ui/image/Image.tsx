@@ -2,7 +2,7 @@ import { Skeleton } from 'antd';
 import React, { FC, useEffect, useState } from 'react';
 import { IImageLazyProps } from './type';
 
-export const ImageLazy: FC<IImageLazyProps> = ({ src, inView }) => {
+export const ImageLazy: FC<IImageLazyProps> = ({ src, inView, altText }) => {
   const [isLoadedImage, setIsLoadedImage] = useState(false);
   useEffect(() => {
     if (inView && !isLoadedImage) {
@@ -15,7 +15,7 @@ export const ImageLazy: FC<IImageLazyProps> = ({ src, inView }) => {
   }, [inView]);
   return (
     <>
-      {isLoadedImage && inView && <img onLoad={() => setIsLoadedImage(true)} src={src} />}
+      {isLoadedImage && inView && <img onLoad={() => setIsLoadedImage(true)} src={src} alt={altText} />}
       {!isLoadedImage && <Skeleton.Image active={true} />}
     </>
   );
